@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+<h1>Update Course</h1>
+{% endblock title %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+{% if message.tags == 'error' %}
+
+<div class="alert alert-danger" role="alert" style="display:flex; justify-content: center;">
+  <p style="color:red  ">{{ message }}</p>
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Post title</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="post-title" value="{{post.post_title}}">
+    <br>
+    <label for="exampleInputEmail1" class="form-label">Post body</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="post-title" value="{{post.post_title}}">
+
+  </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock content %}

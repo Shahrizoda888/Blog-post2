@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}
+<h1>All Post</h1>
+{% endblock title %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+{% if message.tags == 'success' %}
+
+<div class="alert alert-success" role="alert" style="display:flex; justify-content: center;">
+  <p style="color:green  ">{{ message }}</p>
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Post title</th>
+      <th scope="col">Created_at</th>
+      
+        
+    </tr>
+  </thead>
+  <a href="{% url 'update_post' %}">Update</a>
+  <a href="{% url 'delete_post' %}">Delete</a>
+  <tbody>
+    <div class="post-entry">
+        <h2>
+            {{ post.title }}
+        </h2>
+        
+        <p>{{ post.body }}</p>
+    </div>
+    <h3>Muallif:{{ post.author }}</h3>
+  {% for post in post %}
+  <tr>
+      
+      <td><a class="btn btn-primary" href="{% url 'update_post' post.id %}">Update</a></td>
+      <td><a class="btn btn-primary" href="{% url  'delete_post' post.id %}">Delete</a></td>
+    </tr>
+
+{% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}
