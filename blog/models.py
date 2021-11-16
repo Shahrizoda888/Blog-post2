@@ -10,7 +10,7 @@ from django.contrib.auth.models import AbstractUser,User
 from django.urls import reverse
 # Create your models here.
 class Post(models.Model):
-    title=models.TextField()
+    title=models.CharField(max_length=300)
     body=models.TextField()
     author=models.ForeignKey(
         'auth.User',

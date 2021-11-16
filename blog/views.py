@@ -13,7 +13,7 @@ class home(ListView):
     model=Post
     template_name='home.html'
     
-    
+
 #register
 def register(request):
     
@@ -47,6 +47,7 @@ def add_post(request):
        try:
            messages.success(request, 'Successfully added Post')
            post_model=Post(title=title)
+           post_model=Post(body=body)
            post_model.save()
            return  redirect('all_post')
        except:
@@ -82,8 +83,6 @@ def update_post(request,pk):
 
 
 #detailPost
-
-
 @login_required(login_url='login')
 def detail_post(request,pk):
     post=Post.objects.get(id=pk)
