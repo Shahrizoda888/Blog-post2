@@ -10,7 +10,7 @@
     <p>{{ post.body }}</p>
 </div>
 
-<p><a href="{% url 'update_post' post.pk %}" class="btn btn-primary">Update</a></p>
-<p><a href="{% url 'delete_post' post.pk %}" class="btn btn-primary">Delete</a></p> 
+<p><a href="{% url 'update_post' post.pk %}" class="btn btn-primary"><strong>Update</strong> </a></p>
+<p><a href="{% url 'delete_post' post.pk %}" class="btn btn-primary"> <strong>Delete</strong> </a></p> 
 
 {% endblock content %}
