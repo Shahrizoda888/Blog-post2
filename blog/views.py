@@ -36,6 +36,7 @@ def login(request):
 
 
 #add_post
+@login_required(login_url='login')
 def add_post(request):
      if request.method == 'POST':
        title=request.POST.get('title')
@@ -53,6 +54,7 @@ def add_post(request):
 
 
 #delete_post
+@login_required(login_url='login')
 def delete_post(request):
     post=Post.object.get(id=pk)
     post.delete()
@@ -61,6 +63,7 @@ def delete_post(request):
 
 
 #update_post
+@login_required(login_url='login')
 def update_post(request):
      post=Post.object.get(id=pk)
      if request.method == 'POST':
@@ -72,23 +75,32 @@ def update_post(request):
             return  redirect('all_post')
         except:
             messages.error(request, 'Invalid updated Post')
-            return  redirect('all_post.html',pk)
+            return  redirect('all_post',pk)
      return render(request,'update_post.html')
 
 
 #detailPost
 
-class detail_post(DetailView):
-    model=Post
-    template_name='detail_post.html'
+
+@login_required(login_url='login')
+def detail_post(request,pk):
+    post=Post.objects.get(id=pk)
+    return render(request,'detail_post.html',{'post':post})
+
+
+def detail_post(request,pk):
+    post=Post.objects.get(id=pk)
+    return render(request,'detail_post.html',{'post':post})
+
     
 #logout
 def logout(request):
     logout(request)
-    return redirect('home.html')
+    return redirect('home')
 
 
 #all_post
+@login_required(login_url='login')
 def all_post(request):
     post=Post.objects.all().order_by('-created_at')
     return render(request,'all_post.html')

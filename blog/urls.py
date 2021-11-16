@@ -22,3 +22,4 @@ urlpatterns = [
     path('logout/',logout,name='logout'),
 
 ]
+
