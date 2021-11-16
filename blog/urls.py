@@ -10,6 +10,7 @@ from .views import (
     detail_post,
     all_post
     )
+
 urlpatterns = [
     path('',home.as_view(),name='home'),
     path('register/',register,name='register'),

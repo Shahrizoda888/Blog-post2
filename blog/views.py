@@ -13,6 +13,7 @@ class home(ListView):
     model=Post
     template_name='home.html'
     
+    
 #register
 def register(request):
     
@@ -40,6 +41,7 @@ def login(request):
 def add_post(request):
      if request.method == 'POST':
        title=request.POST.get('title')
+       body=request.POST.get('body')
 
 
        try:
@@ -55,17 +57,17 @@ def add_post(request):
 
 #delete_post
 @login_required(login_url='login')
-def delete_post(request):
-    post=Post.object.get(id=pk)
+def delete_post(request,pk):
+    post=Post.objects.get(id=pk)
     post.delete()
     messages.success(request, 'Successfully deleted Post')
-    return render(request,'all_post.html')
+    return redirect('all_post')
 
 
 #update_post
 @login_required(login_url='login')
-def update_post(request):
-     post=Post.object.get(id=pk)
+def update_post(request,pk):
+     post=Post.objects.get(id=pk)    #shu
      if request.method == 'POST':
         title=request.POST.get('title')
         try:
@@ -76,7 +78,7 @@ def update_post(request):
         except:
             messages.error(request, 'Invalid updated Post')
             return  redirect('all_post',pk)
-     return render(request,'update_post.html')
+     return render(request,'update_post.html',{'post':post})
 
 
 #detailPost
@@ -88,9 +90,6 @@ def detail_post(request,pk):
     return render(request,'detail_post.html',{'post':post})
 
 
-def detail_post(request,pk):
-    post=Post.objects.get(id=pk)
-    return render(request,'detail_post.html',{'post':post})
 
     
 #logout
@@ -102,8 +101,8 @@ def logout(request):
 #all_post
 @login_required(login_url='login')
 def all_post(request):
-    post=Post.objects.all().order_by('-created_at')
-    return render(request,'all_post.html')
+    post=Post.objects.all().order_by('created_at')
+    return render(request,'all_post.html',{'post':post})
 
 
 
