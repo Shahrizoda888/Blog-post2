@@ -18,10 +18,7 @@ class home(ListView):
     template_name='home.html'
     
 
-#register
-def register(request):
-    
-    return render(request,'register.html')
+
 
 
 #login

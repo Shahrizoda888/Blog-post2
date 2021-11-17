@@ -1,7 +1,6 @@
 from django.urls import path
 from .views import (
     home,
-    register,
     login,
     add_post,
     delete_post,
@@ -13,7 +12,7 @@ from .views import (
 
 urlpatterns = [
     path('',home.as_view(),name='home'),
-    path('register/',register,name='register'),
+    
     path('login/',login,name='login'),
     path('add-post/',add_post,name='add_post'),
     path('delete-post/<int:pk>/',delete_post,name='delete_post'),

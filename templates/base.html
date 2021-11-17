@@ -25,10 +25,13 @@
     <p><a href="{% url 'logout' %}" class="btn btn-primary" style="margin-left: 85%; ">Log out</a></p>
     {% else %}
     <p>
-    <a href="{% url 'login' %}" class="btn btn-primary" style="margin-left: 85%;">Login</a>  
+      <div >
+        <a href="{% url 'login' %}" class="btn btn-primary" style="margin-left: 85%; ">Login</a>  
     
-    <a href="{% url 'register' %}" class="btn btn-primary" style="margin-left: 85%;">Sign Up</a>
-    </p>
+        <a href="{% url 'signup' %}" class="btn btn-primary" style="margin-left: 85%; ">Sign Up</a>
+       
+      </div>
+     </p>
     {% endif %}
     {% block content %}
       
