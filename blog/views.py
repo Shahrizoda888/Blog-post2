@@ -2,7 +2,11 @@ from django.contrib import  messages
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth import authenticate,login
+from django.contrib.auth import logout as django_logout
+from django.shortcuts import redirect
+
+
 from django.views.generic import ListView,DetailView
 from .models import Post
 # Create your views here.
@@ -83,7 +87,7 @@ def update_post(request,pk):
 
 
 #detailPost
-@login_required(login_url='login')
+
 def detail_post(request,pk):
     post=Post.objects.get(id=pk)
     return render(request,'detail_post.html',{'post':post})
@@ -92,8 +96,10 @@ def detail_post(request,pk):
 
     
 #logout
+
+
 def logout(request):
-    logout(request)
+    django_logout(request)
     return redirect('home')
 
 

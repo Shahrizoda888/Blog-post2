@@ -18,10 +18,10 @@
     {% csrf_token %}
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Post title</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="post-title" value="{{post.post_title}}">
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="post-title" value="{{post.title}}">
     <br>
     <label for="exampleInputEmail1" class="form-label">Post body</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="post-title" value="{{post.post_title}}">
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="post-title" value="{{post.title}}">
 
   </div>
     <button type="submit" class="btn btn-primary">Submit</button>
