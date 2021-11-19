@@ -7,12 +7,13 @@ from .views import (
     update_post,
     logout,
     detail_post,
-    all_post
+    all_post,
+    SignUpView
     )
 
 urlpatterns = [
     path('',home.as_view(),name='home'),
-    
+    path('signup/', SignUpView.as_view(), name='signup'),
     path('login/',login,name='login'),
     path('add-post/',add_post,name='add_post'),
     path('delete-post/<int:pk>/',delete_post,name='delete_post'),
